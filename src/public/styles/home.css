@@ -1,0 +1,65 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin: 0;
+}
+
+.h1-welcome {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.home-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.get-started-btn {
+    background-color: #000000;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.get-started-btn:hover {
+    background-color: white;
+    color: #000000;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.5);
+}
+
+.already-registered {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 20px;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.already-registered:hover {
+    color: rgba(96, 91, 91, 0.994);
+    text-decoration: underline;
+}
+
+
+.home-logo-img {
+    width: 550px;
+    height: auto;
+    margin-bottom: -150px;
+}
