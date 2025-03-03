@@ -14,11 +14,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/deniskaragyozov/Talksport/issues"
   },
   "homepage": "https://github.com/deniskaragyozov/Talksport#readme",
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
   }
 }
