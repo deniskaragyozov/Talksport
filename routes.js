@@ -8,6 +8,7 @@ routes.get('/', (req, res) => {
     res.render('welcome');
 });
 
+routes.use('/home', homeController)
 routes.use('/auth', authController);
 
 export default routes;

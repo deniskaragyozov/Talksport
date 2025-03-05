@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: 140px 0;
+}
+
+.nav-icons {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: rgba(96, 91, 91, 0.994);
+}
+
+.sidebar-logo-img {
+    width: 150px;
+    height: auto;
+    margin-bottom: -10px;
+}
+
+.feed {
+    flex: 1;
+    padding: 150px;
+    overflow-y: auto;
+}
+
+.feed h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.post {
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.post h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+}
+
+.post p {
+    font-size: 1rem;
+}
+
+.post-btn {
+    background-color: #000000;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.post-btn:hover{
+    background-color: white;
+    color: #000000;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.5);
+}
