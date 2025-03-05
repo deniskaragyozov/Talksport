@@ -33,7 +33,7 @@ input:focus {
 }
 
 .signup-btn {
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
     padding: 10px;
     font-size: 1rem;
@@ -45,15 +45,15 @@ input:focus {
 
 .signup-btn:hover {
     background-color: white;
-    color: #007bff;
+    color: #000000;
     transform: scale(1.05);
 }
 
 .login-link {
     display: block;
     margin-top: 15px;
-    color: #007bff;
-    text-decoration: none;
+    color: rgba(96, 91, 91, 0.994);
+    text-decoration: underline;
     font-size: 0.9rem;
     transition: 0.3s;
 }
@@ -61,4 +61,10 @@ input:focus {
 .login-link:hover {
     text-decoration: underline;
     color: white;
+}
+
+.register-logo-img {
+    width: 550px;
+    height: auto;
+    margin-bottom: -150px;
 }
