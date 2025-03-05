@@ -68,3 +68,7 @@ input:focus {
     height: auto;
     margin-bottom: -10px;
 }
+
+.register-logo-img:hover{
+    transform: scale(1.2);
+}
