@@ -4,7 +4,10 @@ import authController from './src/controllers/authContoller.js';
 
 const routes = Router();
 
-routes.use(homeController);
+routes.get('/', (req, res) => {
+    res.render('welcome');
+});
+
 routes.use('/auth', authController);
 
 export default routes;
