@@ -1,0 +1,87 @@
+.post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.post {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: 350px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 1.4rem;
+    flex-grow: 1;
+    margin-right: 350px;
+}
+
+.post-text {
+    font-size: 1.2rem;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+}
+
+.post-image {
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.like-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-right: 450px;
+    margin-bottom: -20px;
+}
+
+.like-btn img {
+    width: 25px;
+    height: 25px;
+    transition: 0.3s;
+    filter: grayscale(100%);
+}
+
+.like-btn:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.like-btn.liked img {
+    filter: grayscale(0%) brightness(1.2) hue-rotate(0deg) saturate(2);
+}
