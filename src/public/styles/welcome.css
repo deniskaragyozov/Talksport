@@ -22,7 +22,7 @@ h1 {
     margin-bottom: 40px;
 }
 
-.get-started-btn {
+.welcome-btn {
     background-color: #000000;
     color: white;
     padding: 12px 25px;
@@ -34,9 +34,10 @@ h1 {
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
     font-weight: bold;
     letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
-.get-started-btn:hover {
+.welcome-btn:hover {
     background-color: white;
     color: #000000;
     transform: scale(1.05);
