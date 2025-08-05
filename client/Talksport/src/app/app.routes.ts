@@ -29,5 +29,9 @@ export const routes: Routes = [
     {
         path: 'profile',
         loadComponent: () => import('./features/profile/profile').then(c => c.Profile)
+    },
+    {
+        path: 'articles/:id',
+        loadComponent: () => import('./features/details/details').then(c => c.Details)
     }
 ];
