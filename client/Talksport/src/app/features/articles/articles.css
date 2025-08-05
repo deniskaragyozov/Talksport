@@ -1,0 +1,59 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .section-main {
+        display: flex;
+        justify-content: center;
+        font-size: 1.7em;
+        
+    }
+
+    .posts{
+        display: flex;
+        flex-direction: column;
+        gap: 0.9em;
+    }
+
+    .post {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+        background-color: #fff;
+        border-radius: 0.8em;
+        padding: 1em;
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+
+            img {
+                width: 40px;
+                border-radius: 100%;
+            }
+        }
+
+        a {
+            align-self: flex-end;
+            .details-btn {
+                font-size: 0.6em;
+                padding: 0.5em;
+                border: none;
+                border-radius: 0.4em;
+            }
+        }
+
+        a:hover{
+            .details-btn {
+                background-color: #00008b;
+                color: #fff;
+            }
+        }
+    }
+
+    h1 {
+        margin-bottom: 1em;
+    }
+}

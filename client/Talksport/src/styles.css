@@ -43,7 +43,7 @@ app-root{
     
 }
 
-app-home
+app-home, app-articles
 {
     display: flex;
     flex-direction: column;
