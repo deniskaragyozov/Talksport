@@ -1,0 +1,187 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+
+    .profilePicNav {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: fill;
+        margin-right: 10px;
+        overflow: hidden;
+    }
+
+    .profileContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        background-color: #fff;
+        border-radius: 0.3em;
+        padding: 7em;
+        padding-top: 2em;
+        height: fit-content;
+        box-sizing: border-box;
+    }
+
+    .profileHeader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .profilePic {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: -15px;
+    }
+
+    .usernameProfile {
+        font-weight: bold;
+        color: #000;
+    }
+
+    .bio {
+        font-size: 1rem;
+        color: #000;
+        margin-top: -20px;
+        max-width: 400px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    /* .postsTitle{
+    font-size: 1.7rem;
+    margin-bottom: -10px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.noPosts{
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: 250px;
+    margin-right: 370px;
+    margin-bottom: 20px;
+}
+
+.post {
+    background-color: #181717;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: 250px;
+    margin-bottom: 20px;
+    margin-right: 640px;
+}
+.post h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+}
+
+.post p {
+    font-size: 1rem;
+}
+
+.postBtn {
+    background-color: #32CD32;
+    text-shadow: 0px 1px 1px rgb(0, 0, 0);
+    color: rgb(235, 235, 235);
+    padding: 12px 25px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.postBtn:hover{
+    background-color: white;
+    color: #32CD32;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.5);
+}
+
+.postsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin-right: 550px;
+}
+
+.postHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.profilePicPost {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.usernamePost {
+    font-weight: bold;
+    font-size: 1.4rem;
+    flex-grow: 1;
+    margin-right: 350px;
+}
+
+.postText {
+    font-size: 1.2rem;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+}
+
+.readMore {
+    background-color: white;
+    color: #3a3b3a;
+    padding: 5px 10px;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left:380px;
+}
+
+.readMore:hover{
+    background-color: #32CD32;
+    color: rgb(235, 235, 235);
+    text-shadow: 0px 1px 1px rgb(0, 0, 0);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.5);
+} */
+}
