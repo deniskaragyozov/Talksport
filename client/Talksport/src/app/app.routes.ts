@@ -33,5 +33,9 @@ export const routes: Routes = [
     {
         path: 'articles/:id',
         loadComponent: () => import('./features/details/details').then(c => c.Details)
+    },
+    {
+        path: 'articles/:id/edit',
+        loadComponent: () => import('./features/edit/edit').then(c => c.Edit)
     }
 ];
