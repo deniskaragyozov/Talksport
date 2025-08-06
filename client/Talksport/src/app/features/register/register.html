@@ -2,18 +2,76 @@
     <h1 class="title">Create an account</h1>
 
     <div class="registerContainer">
-        <form class="registerForm" action="#">
-            <input type="text" name="username" placeholder="Username">
-            <input type="email" name="email" placeholder="Email">
-            <input type="text" name="profilePic" placeholder="Profile picture (link)">
-            <input type="text" name="bio" placeholder="Add a bio">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="re-password" placeholder="Confirm password">
+        <form class="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()"> 
+            <input
+             [class.input-error]="isUsernameValid" 
+             type="text" 
+             id="username" 
+             placeholder="Username" 
+             formControlName="username">
+             @if(isUsernameValid){
+                <p class="error">
+                    {{ usernameErrorMessage }}
+                </p>
+             }
+            <input
+            [class.input-error]="isEmailValid" 
+            type="email" 
+            id="email" 
+            placeholder="Email"
+            formControlName="email">
+            @if(isEmailValid){
+                <p class="error">
+                    {{ emailErrorMessage }}
+                </p>
+             }
+            <input 
+            [class.input-error]="isProfilePicValid" 
+            type="text" 
+            id="profilePic" 
+            placeholder="Profile picture (link)"
+            formControlName="profilePic">
+            @if(isProfilePicValid){
+                <p class="error">
+                    {{ profilePicErrorMessage }}
+                </p>
+             }
+            <input 
+            [class.input-error]="isBioValid" 
+            type="text" 
+            id="bio" 
+            placeholder="Add a bio" 
+            formControlName="bio">
+            @if(isBioValid){
+                <p class="error">
+                    {{ bioErrorMessage }}
+                </p>
+             }
 
-            <!-- If you want to show the error, just uncomment this line -->
-            <!-- <h6 class="errorText">Error message!</h6> -->
-
-            <button type="submit" class="registerBtn">Log in</button>
+            <div formGroupName="passwords" class="passwords">
+            <input 
+            [class.input-error]="isPasswordValid" 
+            type="password" 
+            id="password" 
+            placeholder="Password" 
+            formControlName="password">
+            @if(isPasswordValid){
+                <p class="error">
+                    {{ passwordErrorMessage }}
+                </p>
+             }
+            <input 
+            [class.input-error]="isPasswordValid" 
+            type="password" id="rePassword" 
+            placeholder="Confirm password" 
+            formControlName="rePassword">
+            @if(isPasswordValid){
+                <p class="error">
+                    {{ rePasswordErrorMessage }}
+                </p>
+             }
+            </div>
+            <button [disabled]="registerForm.invalid" type="submit" class="registerBtn">Register</button>
 
             <a routerLink="/login">Already registered?</a>
         </form>
