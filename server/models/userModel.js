@@ -5,9 +5,6 @@ const saltRounds = Number(process.env.SALTROUNDS) || 5;
 const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
-    tel: {
-        type: String,
-    },
     email: {
         type: String,
         required: true,
@@ -25,6 +22,12 @@ const userSchema = new mongoose.Schema({
             message: props => `${props.value} must contains only latin letters and digits!`
         },
     },
+    bio: {
+        type: String,
+    },
+    profilePic: {
+        type: String,
+    },
     password: {
         type: String,
         required: true,
@@ -36,14 +39,15 @@ const userSchema = new mongoose.Schema({
             message: props => `${props.value} must contains only latin letters and digits!`
         },
     },
-    themes: [{
-        type: ObjectId,
-        ref: "Theme"
-    }],
-    posts: [{
-        type: ObjectId,
-        ref: "Post"
-    }]
+    //TODO: ADD ARTICLES
+    // themes: [{
+    //     type: ObjectId,
+    //     ref: "Theme"
+    // }],
+    // posts: [{
+    //     type: ObjectId,
+    //     ref: "Post"
+    // }]
 }, { timestamps: { createdAt: 'created_at' } });
 
 userSchema.methods = {
