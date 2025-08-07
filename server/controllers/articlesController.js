@@ -2,6 +2,7 @@ const { userModel, articleModel } = require('../models');
 
 function getAll(req, res, next) {
     articleModel.find()
+        .sort({created_at: "desc"})
         .populate('userId')
         .then(articles => res.json(articles))
         .catch(next);
