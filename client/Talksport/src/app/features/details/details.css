@@ -37,10 +37,10 @@ main {
 
     .postImage {
         width: 100%;
-        min-width: 700px;
-        min-height: 500px;
-        max-width: 1000px;
-        max-height: 800px;
+        min-width: 400px;
+        min-height: 200px;
+        max-width: 700px;
+        max-height: 500px;
         object-fit: cover;
         border-radius: 5px;
         align-self: center;

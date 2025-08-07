@@ -11,7 +11,7 @@ function createArticle(req, res, next) {
     const { title, imageUrl, description } = req.body;
     const { _id: userId } = req.user;
 
-    articleModel.create({ title, imageUrl, description, userId })
+    articleModel.create({ title, imageUrl, userId, description })
         .then(article => res.status(200).json(article))
         .catch(next)
 }

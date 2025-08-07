@@ -17,6 +17,10 @@ export class ArticlesService {
         return this.httpClient.get<Article[]>(this.apiUrl);
     }
 
+    getArticle(articleId: string | null): Observable<Article> {
+        return this.httpClient.get<Article>(`${this.apiUrl}/${articleId}`);
+    }
+
     createArticle(title: string, imageUrl: string, description: string): Observable<Article> {
         return this.httpClient.post<Article>(this.apiUrl, {
             title,

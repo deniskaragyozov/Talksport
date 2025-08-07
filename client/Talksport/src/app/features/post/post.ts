@@ -92,7 +92,8 @@ export class Post {
             this.router.navigate(['/articles'])
           },
           error: (err) => {
-            console.log('An error occured while creating article', err)
+            console.log('An error occured while creating article', err),
+            this.markFormGroupTouched()
           }
         })
     }

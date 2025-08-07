@@ -31,11 +31,11 @@ export const routes: Routes = [
         loadComponent: () => import('./features/profile/profile').then(c => c.Profile)
     },
     {
-        path: 'articles/:id',
+        path: 'articles/:articleId',
         loadComponent: () => import('./features/details/details').then(c => c.Details)
     },
     {
-        path: 'articles/:id/edit',
+        path: 'articles/:articleId/edit',
         loadComponent: () => import('./features/edit/edit').then(c => c.Edit)
     }
 ];

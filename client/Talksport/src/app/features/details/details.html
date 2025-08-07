@@ -4,17 +4,27 @@
 
         <div class="post">
             <div class="postHeader">
-                <img src="https://e0.365dm.com/25/05/1600x900/skysports-bryan-mbeumo-brentford_6926923.jpg?20250525162737"
+                <!-- @if((article$ | async)?.imageUrl){
+                    <img src="{{(article$ | async)?.imageUrl}}"
+                    alt="Profile Picture" class="profilePicPost">
+                }@else {
+                    <img src="profile.png"
+                    alt="Profile Picture" class="profilePicPost">
+                } -->
+                <img src="profilePicDefault.png"
                     alt="Profile Picture" class="profilePicPost">
                 <a href="/user-id/profile"><span class="username">Username</span></a>
             </div>
 
-            <h3 class="postTitle">This is a test</h3>
-            <p class="postText">YANITED YANITED YANITED!!! WHAT A PERFORMANCE, PL SUMMER SERIES CHAMPIONS, WE ARE SO
-                BACK!!!</p>
+            <h3 class="postTitle">{{(article$ | async)?.title}}</h3>
+            <p class="postText">{{(article$ | async)?.description }}</p>
 
             <!-- Optional image -->
-            <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Manchester_United_Panorama_%288051523746%29.jpg" alt="Post Picture" class="postImage"> -->
+
+            @if((article$ | async)?.imageUrl){
+                    <img src="{{(article$ | async)?.imageUrl}}"
+                    alt="Post Picture" class="postImage">
+                }
 
             <div class="postFooter">
                 <span class="postComments">Likes: 0</span>
