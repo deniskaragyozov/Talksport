@@ -8,7 +8,7 @@
                     <img src="{{(user$ | async)?.profilePic}}"
                     alt="Profile Picture" class="profilePicPost">
                 }@else {
-                    <img src="profile.png"
+                    <img src="profilePicDefault.png"
                     alt="Profile Picture" class="profilePicPost">
                 }
                 <a href="/user-id/profile"><span class="username">{{(user$ | async)?.username}}</span></a>

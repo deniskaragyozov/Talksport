@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ArticlesService } from '../../core/services/articles.service';
 import { Article } from '../../models/article.model';
@@ -20,5 +20,6 @@ export class Articles {
   constructor(private articlesService: ArticlesService){
     this.articles$ = this.articlesService.getArticles();
   }
+
 
 }
