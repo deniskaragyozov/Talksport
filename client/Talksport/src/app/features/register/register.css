@@ -11,6 +11,7 @@ main {
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
         min-height: 300px;
+        min-width: 450px;
 
         .registerForm {
             display: flex;
@@ -27,7 +28,7 @@ main {
     }
 
     input {
-        width: 90%;
+        min-width: 100%;
         padding: 10px;
         font-size: 1rem;
         border: 1px solid #444;
@@ -42,6 +43,7 @@ main {
     }
 
     .input-error{
+        min-width: 100%;
         border-color: red;
     }
 
@@ -64,13 +66,6 @@ main {
         transform: scale(1.05);
     }
 
-    .errorText {
-        font-size: 0.8rem;
-        color: #ff0000;
-        margin-top: -15px;
-        margin-bottom: -5px;
-    }
-
     a {
         color: #000;
         text-decoration: none;
@@ -83,5 +78,10 @@ main {
 
     .error{
         color: red;
+        min-width: 100%;
+    }
+
+    .passwords{
+        min-width: 100%;
     }
 }
