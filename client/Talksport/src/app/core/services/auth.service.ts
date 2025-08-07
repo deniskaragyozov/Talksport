@@ -61,10 +61,11 @@ export class AuthService {
         return this.httpClient.post<void>(`${this.apiUrl}/logout`, {}, {
             withCredentials: true
         }).pipe(
-            tap(user => {
+            tap(() => {
                 this._currentUser.set(null);
                 this._isLoggedIn.set(false);
                 localStorage.removeItem('currentUser');
+                console.log('logout')
             })
         )
     }
