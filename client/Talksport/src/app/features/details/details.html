@@ -4,16 +4,14 @@
 
         <div class="post">
             <div class="postHeader">
-                <!-- @if((article$ | async)?.imageUrl){
-                    <img src="{{(article$ | async)?.imageUrl}}"
+                @if((user$ | async)?.profilePic){
+                    <img src="{{(user$ | async)?.profilePic}}"
                     alt="Profile Picture" class="profilePicPost">
                 }@else {
                     <img src="profile.png"
                     alt="Profile Picture" class="profilePicPost">
-                } -->
-                <img src="profilePicDefault.png"
-                    alt="Profile Picture" class="profilePicPost">
-                <a href="/user-id/profile"><span class="username">Username</span></a>
+                }
+                <a href="/user-id/profile"><span class="username">{{(user$ | async)?.username}}</span></a>
             </div>
 
             <h3 class="postTitle">{{(article$ | async)?.title}}</h3>

@@ -65,11 +65,14 @@ export class AuthService {
                 this._currentUser.set(null);
                 this._isLoggedIn.set(false);
                 localStorage.removeItem('currentUser');
-                console.log('logout')
             })
         )
     }
 
+    getUser(userId: string | null): Observable<User> {
+        return this.httpClient.get<User>(`${this.apiUrl}/users/profile/${userId}`)
+    }
+    
     private mapApiUserToUser(apiUser: ApiUser): User{
         return <User> {
             id: apiUser._id,
