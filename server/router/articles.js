@@ -7,9 +7,11 @@ const { articleController } = require('../controllers');
 // middleware that is specific to this router
 
 router.get('/', articleController.getAll);
-router.post('/', articleController.createArticle);
+router.post('/', auth(), articleController.createArticle);
 router.get('/:articleId', articleController.createArticle);
 router.put('/:articleId/like', articleController.likeArticle);
+router.put('/:articleId/edit', auth(), articleController.editArticle);
+router.delete('/:articleId/delete', auth(), articleController.deleteArticle);
 
 // router.get('/my-trips/:id/reservations', auth(), themeController.getReservations);
 

@@ -9,10 +9,9 @@ function getAll(req, res, next) {
 
 function createArticle(req, res, next) {
     const { title, imageUrl, description } = req.body;
-    //TODO add auth
-    //const { _id: userId } = req.user;
+    const { _id: userId } = req.user;
 
-    articleModel.create({ title, imageUrl, description })
+    articleModel.create({ title, imageUrl, description, userId })
         .then(article => res.status(200).json(article))
         .catch(next)
 }
@@ -36,11 +35,49 @@ function likeArticle(req, res, next) {
         .catch(next);
 }
 
+function editArticle(req, res, next) {
+    const { articleId } = req.params;
+    const { title,description,imageUrl } = req.body;
+    const { _id: userId } = req.user;
+
+    // if the userId is not the same as this one of the post, the post will not be updated
+    articleModel.findOneAndUpdate({ _id: articleId, userId }, { title, imageUrl, description}, { new: true })
+        .then(updatedPost => {
+            if (updatedPost) {
+                res.status(200).json(updatedPost);
+            }
+            else {
+                res.status(401).json({ message: `Not allowed!` });
+            }
+        })
+        .catch(next);
+}
+
+function deleteArticle(req, res, next) {
+    const { articleId } = req.params;
+    const { _id: userId } = req.user;
+
+    Promise.all([
+        articleModel.findOneAndDelete({ _id: articleId, userId }),
+        userModel.findOneAndUpdate({ _id: userId }, { $pull: { articles: articleId } }),
+
+    ])
+        .then((deletedOne) => {
+            if (deletedOne) {
+                res.status(200).json(deletedOne)
+            } else {
+                res.status(401).json({ message: `Not allowed!` });
+            }
+        })
+        .catch(next);
+}
 
 
 module.exports = {
     getAll,
     createArticle,
     getArticle,
-    likeArticle
+    likeArticle,
+    editArticle,
+    deleteArticle
 }
