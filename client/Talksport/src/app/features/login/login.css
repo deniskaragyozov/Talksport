@@ -83,5 +83,6 @@ main {
 
     .error{
         color: red;
+        margin: -1.2em 0 -1em 0;
     }
 }

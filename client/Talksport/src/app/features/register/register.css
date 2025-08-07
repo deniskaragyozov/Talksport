@@ -78,7 +78,7 @@ main {
 
     .error{
         color: red;
-        min-width: 100%;
+        margin: -1.2em 0 -1em 0;
     }
 
     .passwords{

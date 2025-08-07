@@ -3,18 +3,42 @@
 
         <h1 class="title">What's on your mind?</h1>
 
-        <form class="postForm" action="#">
+        <form class="postForm" [formGroup]="postForm">
             <span>Title</span>
-            <input type="text" name="title">
+            <input 
+            [class.input-error]="isTitleValid" 
+            type="text" 
+            id="title" 
+            formControlName="title">
+            @if(isTitleValid){
+                <p class="error">
+                    {{ titleErrorMessage }}
+                </p>
+            }
 
             <span>Image URL (optional)</span>
-            <input type="text" name="image" placeholder="https://...">
+            <input 
+            [class.input-error]="isImageUrlValid" 
+            type="text" 
+            id="image" 
+            placeholder="https://..." 
+            formControlName="imageUrl">
+            @if(isImageUrlValid){
+                <p class="error">
+                    {{ imageUrlErrorMessage }}
+                </p>
+            }
 
             <span>Description</span>
-            <textarea name="description"></textarea>
-
-            <!-- Uncomment if you want to show an error -->
-            <!-- <h6 class="errorText">Error message!</h6> -->
+            <textarea 
+            [class.input-error] 
+            id="description" 
+            formControlName="description"></textarea>
+            @if(isDescriptionValid){
+                <p class="error">
+                    {{ descriptionErrorMessage }}
+                </p>
+            }
 
             <button type="submit" class="postBtn">Post</button>
         </form>
