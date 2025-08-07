@@ -3,7 +3,7 @@
 
         <h1 class="title">What's on your mind?</h1>
 
-        <form class="postForm" [formGroup]="postForm">
+        <form class="postForm" [formGroup]="postForm" (ngSubmit)="onSubmit()">
             <span>Title</span>
             <input 
             [class.input-error]="isTitleValid" 
@@ -40,7 +40,7 @@
                 </p>
             }
 
-            <button type="submit" class="postBtn">Post</button>
+            <button [disabled]="postForm.invalid" type="submit" class="postBtn">Post</button>
         </form>
     </div>
 </main>

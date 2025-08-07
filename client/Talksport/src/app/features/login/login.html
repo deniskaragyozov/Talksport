@@ -26,7 +26,7 @@
                 </p>
              }
 
-            <button type="submit" class="loginBtn">Log in</button>
+            <button [disabled]="loginForm.invalid" type="submit" class="loginBtn">Log in</button>
 
             <a routerLink="/register">Don't have an account?</a>
         </form>

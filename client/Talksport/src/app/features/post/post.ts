@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { ArticlesService } from '../../core/services/articles.service';
 
 @Component({
   selector: 'app-post',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './post.css'
 })
 export class Post {
-  private authService = inject(AuthService);
+  private articleService = inject(ArticlesService);
   private router = inject(Router);
   private formBuilder = inject(FormBuilder);
 
@@ -81,8 +81,20 @@ export class Post {
   }
 
   onSubmit(): void {
+    const {title, imageUrl, description} = this.postForm.value;
     if (this.postForm.valid) {
-
+      this.articleService.createArticle(
+        title, 
+        imageUrl, 
+        description)
+        .subscribe({
+          next: () => {
+            this.router.navigate(['/articles'])
+          },
+          error: (err) => {
+            console.log('An error occured while creating article', err)
+          }
+        })
     }
   }
 

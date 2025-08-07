@@ -11,9 +11,20 @@ import { Article } from "../../models/article.model";
 export class ArticlesService {
     private apiUrl = 'http://localhost:3000/api/articles';
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) { }
 
-    getArticles(): Observable<Article[]>{
+    getArticles(): Observable<Article[]> {
         return this.httpClient.get<Article[]>(this.apiUrl);
+    }
+
+    createArticle(title: string, imageUrl: string, description: string): Observable<Article> {
+        return this.httpClient.post<Article>(this.apiUrl, {
+            title,
+            imageUrl,
+            description
+        },
+            {
+                withCredentials: true
+            });
     }
 }
