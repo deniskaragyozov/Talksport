@@ -12,6 +12,8 @@ export class Header {
   protected authService = inject(AuthService);
   private router = inject(Router);
 
+  readonly isLoggedIn = this.authService.isLoggedIn;
+
   logout(): void {
     this.authService.logout().subscribe({
       next: () => {

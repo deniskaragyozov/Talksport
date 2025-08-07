@@ -8,18 +8,22 @@
         <div class="auth-nav">
             <h1>SPORT</h1>
             <ul>
-                <a routerLink="/register">
-                    <li>Register</li>
-                </a>
-                <a routerLink="/login">
-                    <li>Login</li>
-                </a>
+                @if(isLoggedIn()){
                 <a routerLink="/home" (click)="logout()">
                     <li>Logout</li>
                 </a>
                 <a routerLink="/profile">
                     <li>Profile</li>
                 </a>
+                } @else{
+                <a routerLink="/register">
+                    <li>Register</li>
+                </a>
+                <a routerLink="/login">
+                    <li>Login</li>
+                </a>
+                }
+
             </ul>
         </div>
 
@@ -33,9 +37,11 @@
             <a routerLink="/articles">
                 <li>Articles</li>
             </a>
+            @if(isLoggedIn()){
             <a routerLink="/post">
                 <li>Post</li>
             </a>
+            }
         </ul>
     </div>
 </header>
