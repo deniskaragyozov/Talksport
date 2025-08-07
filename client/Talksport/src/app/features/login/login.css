@@ -33,12 +33,16 @@ main {
         border: 1px solid #444;
         border-radius: 5px;
         background-color: rgb(240, 240, 240);
-        color: white;
+        color: #000;
     }
 
     input:focus {
         outline: none;
         border-color: #ffffff;
+    }
+
+    .input-error{
+        border-color: red;
     }
 
     .loginBtn {
@@ -75,5 +79,9 @@ main {
     a:hover {
         color: #00008b;
         text-decoration: underline;
+    }
+
+    .error{
+        color: red;
     }
 }

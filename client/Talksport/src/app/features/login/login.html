@@ -2,12 +2,29 @@
     <h1 class="title">Log into your account</h1>
 
     <div class="loginContainer">
-        <form class="loginForm" action="/login">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-
-            <!-- If you want to show the error, just uncomment this line -->
-            <!-- <h6 class="errorText">Error message!</h6> -->
+        <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <input 
+            [class.input-error]="isEmailValid" 
+            type="email" 
+            id="email" 
+            placeholder="Email" 
+            formControlName="email">
+            @if(isEmailValid){
+                <p class="error">
+                    {{ emailErrorMessage }}
+                </p>
+             }
+            <input 
+            [class.input-error]="isPasswordValid" 
+            type="password" 
+            id="password" 
+            placeholder="Password"
+            formControlName="password">
+            @if(isPasswordValid){
+                <p class="error">
+                    {{ passwordErrorMessage }}
+                </p>
+             }
 
             <button type="submit" class="loginBtn">Log in</button>
 
