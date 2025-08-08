@@ -22,12 +22,14 @@ export class Details implements OnInit {
 
   editMode = signal<boolean>(false);
 
+  private artilceId: string;
   private route = inject(ActivatedRoute);
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
 
   constructor(private articlesService: ArticlesService, private authService: AuthService) {
     this.article$ = this.articlesService.getArticle(this.route.snapshot.paramMap.get('articleId'));
+    this.artilceId = '';
     this.user$ = this.article$.pipe(
       switchMap(article => this.authService.getUser(article.userId))
     );
@@ -46,6 +48,7 @@ export class Details implements OnInit {
           imageUrl: articleData.imageUrl,
           description: articleData.description
         });
+        this.artilceId = articleData._id;
       }
     });
   }
@@ -106,20 +109,36 @@ export class Details implements OnInit {
     return '';
   }
 
-  onSubmit():void{
+  onSubmit(): void {
     this.articlesService.editArticle(
       this.title?.value,
       this.imageUrl?.value,
       this.description?.value,
       this.route.snapshot.paramMap.get('articleId')
     ).subscribe({
-      next:()=>{
+      next: () => {
         this.switchEditMode()
+      },
+      error: (err) => {
+        console.log('An error occured while editing article', err);
       }
     })
   }
 
-   switchEditMode(): void {
+  deleteArticle(): void {
+    this.articlesService.deleteArticle(this.artilceId).subscribe(
+      {
+        next: () => {
+          this.router.navigate(['/articles'])
+        },
+        error: (err) => {
+          console.log('An error occured while deleting article', err)
+        }
+      }
+    );
+  }
+
+  switchEditMode(): void {
     if (this.editMode()) {
       this.editMode.set(false);
     } else {

@@ -34,12 +34,19 @@ export class ArticlesService {
             });
     }
 
-    editArticle(title: string, imageUrl: string, description: string, articleId: string | null){
+    editArticle(title: string, imageUrl: string, description: string, articleId: string | null) {
         return this.httpClient.put<Article>(`${this.apiUrl}/${articleId}/edit`, {
             title,
             imageUrl,
             description
         },
+            {
+                withCredentials: true
+            });
+    }
+
+    deleteArticle(articleId: string | null) {
+        return this.httpClient.delete<Article>(`${this.apiUrl}/${articleId}/delete`,
             {
                 withCredentials: true
             });
