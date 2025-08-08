@@ -22,6 +22,9 @@ const articleSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "User"
     },
+    user: {
+        type: Object
+    }
 
 }, { timestamps: { createdAt: 'created_at' } });
 

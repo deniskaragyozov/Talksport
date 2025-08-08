@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticlesService } from '../../core/services/articles.service';
+import { AuthService } from '../../core/services';
 
 @Component({
   selector: 'app-post',
@@ -11,8 +12,11 @@ import { ArticlesService } from '../../core/services/articles.service';
 })
 export class Post {
   private articleService = inject(ArticlesService);
+  private authService = inject(AuthService);
   private router = inject(Router);
   private formBuilder = inject(FormBuilder);
+
+  private currentUser = this.authService.currentUser;
 
   postForm: FormGroup;
 
@@ -86,7 +90,8 @@ export class Post {
       this.articleService.createArticle(
         title, 
         imageUrl, 
-        description)
+        description,
+      this.currentUser())
         .subscribe({
           next: () => {
             this.router.navigate(['/articles'])

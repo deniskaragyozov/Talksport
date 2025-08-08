@@ -9,10 +9,10 @@ function getAll(req, res, next) {
 }
 
 function createArticle(req, res, next) {
-    const { title, imageUrl, description } = req.body;
+    const { title, imageUrl, description, user } = req.body;
     const { _id: userId } = req.user;
 
-    articleModel.create({ title, imageUrl, userId, description })
+    articleModel.create({ title, imageUrl, userId, description, user })
         .then(article => res.status(200).json(article))
         .catch(next)
 }
