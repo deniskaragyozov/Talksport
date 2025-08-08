@@ -15,21 +15,25 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 })
 export class Details implements OnInit {
 
-  article$: Observable<Article>;
-  user$: Observable<User>;
-  editForm: FormGroup;
-
-
-  editMode = signal<boolean>(false);
-
-  private artilceId: string;
+  private authService = inject(AuthService)
   private route = inject(ActivatedRoute);
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
 
-  constructor(private articlesService: ArticlesService, private authService: AuthService) {
+  private artilceId: string;
+  article$: Observable<Article>;
+  user$: Observable<User>;
+  editForm: FormGroup;
+  isAuthor: boolean;
+
+  editMode = signal<boolean>(false);
+
+  readonly isLoggedIn = this.authService.isLoggedIn;
+
+  constructor(private articlesService: ArticlesService) {
     this.article$ = this.articlesService.getArticle(this.route.snapshot.paramMap.get('articleId'));
     this.artilceId = '';
+    this.isAuthor = false;
     this.user$ = this.article$.pipe(
       switchMap(article => this.authService.getUser(article.userId))
     );
@@ -49,6 +53,7 @@ export class Details implements OnInit {
           description: articleData.description
         });
         this.artilceId = articleData._id;
+        this.isAuthor = this.authService.isAuthor(articleData.userId);
       }
     });
   }

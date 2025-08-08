@@ -72,6 +72,10 @@ export class AuthService {
     getUser(userId: string | null): Observable<User> {
         return this.httpClient.get<User>(`${this.apiUrl}/users/profile/${userId}`)
     }
+
+    isAuthor(authorId: string | null): boolean{
+        return authorId === this.currentUser()?.id;
+    }
     
     private mapApiUserToUser(apiUser: ApiUser): User{
         return <User> {

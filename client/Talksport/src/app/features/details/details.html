@@ -25,7 +25,8 @@
             <div class="postFooter">
                 <span class="postComments">Likes: 0</span>
 
-                <!-- If user is owner -->
+                @if(isLoggedIn()){
+                @if(isAuthor){
                 <div class="postActions">
                     <a routerLink="/articles/1/like">
                         <img src="like.png" alt="Like Icon" class="likeImage">
@@ -37,59 +38,50 @@
                         <img src="delete.png" alt="Delete Icon" class="deleteImage">
                     </a>
                 </div>
-
+                }@else {
                 <!-- If logged in but not owner -->
                 <div class="postActions">
                     <a routerLink="/articles/1/like">
                         <img src="like.png" alt="Like Icon" class="likeImage">
                     </a>
                 </div>
+                }
+            }
             </div>
         </div>
         }@else {
-            <div class="postContainer">
+        <div class="postContainer">
             <h1 class="title">Edit your post</h1>
 
-        <form class="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
-            <span>Title</span>
-            <input 
-            [class.input-error]="isTitleValid" 
-            type="text" 
-            id="title" 
-            formControlName="title">
-            @if(isTitleValid){
+            <form class="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                <span>Title</span>
+                <input [class.input-error]="isTitleValid" type="text" id="title" formControlName="title">
+                @if(isTitleValid){
                 <p class="error">
                     {{ titleErrorMessage }}
                 </p>
-            }
+                }
 
-            <span>Image URL (optional)</span>
-            <input 
-            [class.input-error]="isImageUrlValid" 
-            type="text" 
-            id="image" 
-            placeholder="https://..." 
-            formControlName="imageUrl">
-            @if(isImageUrlValid){
+                <span>Image URL (optional)</span>
+                <input [class.input-error]="isImageUrlValid" type="text" id="image" placeholder="https://..."
+                    formControlName="imageUrl">
+                @if(isImageUrlValid){
                 <p class="error">
                     {{ imageUrlErrorMessage }}
                 </p>
-            }
+                }
 
-            <span>Description</span>
-            <textarea 
-            [class.input-error] 
-            id="description" 
-            formControlName="description"></textarea>
-            @if(isDescriptionValid){
+                <span>Description</span>
+                <textarea [class.input-error] id="description" formControlName="description"></textarea>
+                @if(isDescriptionValid){
                 <p class="error">
                     {{ descriptionErrorMessage }}
                 </p>
-            }
+                }
 
-            <button [disabled]="editForm.invalid" type="submit" class="editBtn">Post</button>
-            <button type="button" class="cancelBtn" (click)="switchEditMode()">Cancel</button>
-        </form>
+                <button [disabled]="editForm.invalid" type="submit" class="editBtn">Post</button>
+                <button type="button" class="cancelBtn" (click)="switchEditMode()">Cancel</button>
+            </form>
         </div>
         }
     </div>
