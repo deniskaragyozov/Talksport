@@ -55,11 +55,11 @@
             id="password"
             placeholder="Password" 
             formControlName="password">
-            @if(isPasswordValid){
+            <!-- @if(isPasswordValid){
                 <p class="error">
                     {{ passwordErrorMessage }}
                 </p>
-             }
+             } -->
             <input 
             [class.input-error]="isPasswordValid" 
             type="password" id="rePassword" 
@@ -67,7 +67,8 @@
             formControlName="rePassword">
             @if(isPasswordValid){
                 <p class="error">
-                    {{ rePasswordErrorMessage }}
+                    <span>{{ passwordErrorMessage }}</span>
+                    <span>{{ rePasswordErrorMessage }}</span>
                 </p>
              }
             </div>

@@ -10,6 +10,7 @@ import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModu
   styleUrl: './register.css'
 })
 export class Register {
+  //TODO: FIX PASSWORD MISMATCH AND INPUTS
   private authService = inject(AuthService);
   private router = inject(Router);
   private formBuilder = inject(FormBuilder);
@@ -24,8 +25,8 @@ export class Register {
       bio: ['', [Validators.minLength(2)]],
       passwords: this.formBuilder.group({
         password: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
-        rePassword: ['', [Validators.required, this.passwordMatchValidator]],
-      })
+        rePassword: ['', [Validators.required]],
+      }, {validators: this.passwordMatchValidator})
     })
   }
 
@@ -138,10 +139,10 @@ export class Register {
 
   get rePasswordErrorMessage(): string {
     if (this.rePassword?.errors?.['required']) {
-      return 'Password is required!';
+      return 'Repeat password is required!';
     }
 
-    if (this.rePassword?.errors?.['passwordMismatch']) {
+    if (this.passwords?.errors?.['passwordMismatch']) {
         return 'Passwords do not match!';
     }
 
@@ -189,7 +190,7 @@ export class Register {
     const password = passwordsControl.get('password');
     const rePassword = passwordsControl.get('rePassword');
 
-    if (password && rePassword && password.value != rePassword.value) {
+    if (password && rePassword && password.value !== rePassword.value) {
       return { passwordMismatch: true };
     }
 
