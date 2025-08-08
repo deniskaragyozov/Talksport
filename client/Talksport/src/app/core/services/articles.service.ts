@@ -33,4 +33,15 @@ export class ArticlesService {
                 withCredentials: true
             });
     }
+
+    editArticle(title: string, imageUrl: string, description: string, articleId: string | null){
+        return this.httpClient.put<Article>(`${this.apiUrl}/${articleId}/edit`, {
+            title,
+            imageUrl,
+            description
+        },
+            {
+                withCredentials: true
+            });
+    }
 }

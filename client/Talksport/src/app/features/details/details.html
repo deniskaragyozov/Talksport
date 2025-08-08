@@ -1,15 +1,16 @@
 <main>
     <div class="container">
+
+        @if(!editMode()){
+
         <h1>Post</h1>
 
         <div class="post">
             <div class="postHeader">
                 @if((user$ | async)?.profilePic){
-                    <img src="{{(user$ | async)?.profilePic}}"
-                    alt="Profile Picture" class="profilePicPost">
+                <img src="{{(user$ | async)?.profilePic}}" alt="Profile Picture" class="profilePicPost">
                 }@else {
-                    <img src="profilePicDefault.png"
-                    alt="Profile Picture" class="profilePicPost">
+                <img src="profilePicDefault.png" alt="Profile Picture" class="profilePicPost">
                 }
                 <a href="/user-id/profile"><span class="username">{{(user$ | async)?.username}}</span></a>
             </div>
@@ -17,12 +18,9 @@
             <h3 class="postTitle">{{(article$ | async)?.title}}</h3>
             <p class="postText">{{(article$ | async)?.description }}</p>
 
-            <!-- Optional image -->
-
             @if((article$ | async)?.imageUrl){
-                    <img src="{{(article$ | async)?.imageUrl}}"
-                    alt="Post Picture" class="postImage">
-                }
+            <img src="{{(article$ | async)?.imageUrl}}" alt="Post Picture" class="postImage">
+            }
 
             <div class="postFooter">
                 <span class="postComments">Likes: 0</span>
@@ -32,7 +30,7 @@
                     <a routerLink="/articles/1/like">
                         <img src="like.png" alt="Like Icon" class="likeImage">
                     </a>
-                    <a routerLink="/articles/1/edit">
+                    <a (click)="switchEditMode()">
                         <img src="edit.png" alt="Edit Icon" class="editImage">
                     </a>
                     <a routerLink="/articles/1/delete">
@@ -48,5 +46,51 @@
                 </div>
             </div>
         </div>
+        }@else {
+            <div class="postContainer">
+            <h1 class="title">Edit your post</h1>
+
+        <form class="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <span>Title</span>
+            <input 
+            [class.input-error]="isTitleValid" 
+            type="text" 
+            id="title" 
+            formControlName="title">
+            @if(isTitleValid){
+                <p class="error">
+                    {{ titleErrorMessage }}
+                </p>
+            }
+
+            <span>Image URL (optional)</span>
+            <input 
+            [class.input-error]="isImageUrlValid" 
+            type="text" 
+            id="image" 
+            placeholder="https://..." 
+            formControlName="imageUrl">
+            @if(isImageUrlValid){
+                <p class="error">
+                    {{ imageUrlErrorMessage }}
+                </p>
+            }
+
+            <span>Description</span>
+            <textarea 
+            [class.input-error] 
+            id="description" 
+            formControlName="description"></textarea>
+            @if(isDescriptionValid){
+                <p class="error">
+                    {{ descriptionErrorMessage }}
+                </p>
+            }
+
+            <button [disabled]="editForm.invalid" type="submit" class="editBtn">Post</button>
+            <button type="button" class="cancelBtn" (click)="switchEditMode()">Cancel</button>
+        </form>
+        </div>
+        }
     </div>
 </main>

@@ -136,4 +136,104 @@ main {
         border-radius: 90%;
         background-color: rgb(240, 240, 240);
     }
+
+    .postContainer {
+        text-align: center;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        min-height: 300px;
+
+        .editForm {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2em;
+        }
+    }
+
+    .title {
+        font-size: 3em;
+        margin-bottom: 0.5em;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: rgb(240, 240, 240);
+        color: #000;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #ffffff;
+    }
+
+    .input-error{
+        border-color: red;
+    }
+
+    .editBtn {
+        background-color: #00008b;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        font-size: 1em;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 2em;
+        margin-bottom: -1.3em;
+    }
+
+    .editBtn:hover {
+        background-color: rgb(240, 240, 240);
+        color: #00008b;
+        transform: scale(1.05);
+    }
+
+    .cancelBtn {
+        background-color: #00008b;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        font-size: 1em;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+   }
+
+    .cancelBtn:hover {
+        background-color: rgb(240, 240, 240);
+        color: #00008b;
+        transform: scale(1.05);
+    }
+
+    textarea {
+        width: 90%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: rgb(240, 240, 240);
+        color: #000;
+        resize: none;
+    }
+
+    textarea:focus {
+        outline: none;
+        border-color: #ffffff;
+    }
+    
+    .error{
+        color: red;
+        margin: -1.2em 0 -1em 0;
+    }
 }
