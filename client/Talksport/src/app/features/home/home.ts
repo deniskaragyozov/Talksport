@@ -3,10 +3,11 @@ import { Article } from '../../models';
 import { Observable } from 'rxjs';
 import { ArticlesService } from '../../core/services';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

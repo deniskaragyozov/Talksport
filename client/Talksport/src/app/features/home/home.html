@@ -20,7 +20,7 @@
                             <p class="title">{{article.title}}</p>
                         </div>
         
-                        <a href="#"><button class="details-btn"> View more </button></a>
+                        <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more </button></a>
                     </article>
                 }
             </div>
