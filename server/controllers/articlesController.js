@@ -25,9 +25,20 @@ function createArticle(req, res, next) {
     const { title, imageUrl, description, user } = req.body;
     const { _id: userId } = req.user;
 
-    articleModel.create({ title, imageUrl, userId, description, user })
-        .then(article => res.status(200).json(article))
-        .catch(next)
+      articleModel.create({ title, description, imageUrl, userId, user })
+        .then((newArticle) => {
+            return userModel.findByIdAndUpdate(
+                userId,
+                { $push: { articles: newArticle._id } },
+                { new: true }
+            ).then(() => newArticle);
+        })
+        .then((newArticle) => {
+            res.status(201).json({
+                article: newArticle
+            });
+        })
+        .catch(next);
 }
 
 function getArticle(req, res, next) {
