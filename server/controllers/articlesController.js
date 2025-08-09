@@ -2,7 +2,7 @@ const { userModel, articleModel } = require('../models');
 
 function getAll(req, res, next) {
     articleModel.find()
-        .sort({created_at: "desc"})
+        .sort({ created_at: "desc" })
         .populate('userId')
         .then(articles => res.json(articles))
         .catch(next);
@@ -21,11 +21,35 @@ function getLatestsArticles(req, res, next) {
         .catch(next);
 }
 
+function getPopularArticles(req, res, next) {
+    const limit = Number(req.query.limit) || 0;
+
+    articleModel.aggregate([
+        {
+            $addFields: {
+                likesCount: { $size: { $ifNull: ["$likes", []] } }
+            }
+        },
+        { $sort: { likesCount: -1 } },
+        ...(limit > 0 ? [{ $limit: limit }] : [])
+    ])
+        .then(articles => {
+            return articleModel.populate(articles, [
+                { path: 'articleId' },
+                { path: 'userId' }
+            ]);
+        })
+        .then(articles => {
+            res.status(200).json(articles);
+        })
+        .catch(next);
+}
+
 function createArticle(req, res, next) {
     const { title, imageUrl, description, user } = req.body;
     const { _id: userId } = req.user;
 
-      articleModel.create({ title, description, imageUrl, userId, user })
+    articleModel.create({ title, description, imageUrl, userId, user })
         .then((newArticle) => {
             return userModel.findByIdAndUpdate(
                 userId,
@@ -62,11 +86,11 @@ function likeArticle(req, res, next) {
 
 function editArticle(req, res, next) {
     const { articleId } = req.params;
-    const { title,description,imageUrl } = req.body;
+    const { title, description, imageUrl } = req.body;
     const { _id: userId } = req.user;
 
     // if the userId is not the same as this one of the post, the post will not be updated
-    articleModel.findOneAndUpdate({ _id: articleId, userId }, { title, imageUrl, description}, { new: true })
+    articleModel.findOneAndUpdate({ _id: articleId, userId }, { title, imageUrl, description }, { new: true })
         .then(updatedPost => {
             if (updatedPost) {
                 res.status(200).json(updatedPost);
@@ -105,5 +129,6 @@ module.exports = {
     likeArticle,
     editArticle,
     deleteArticle,
-    getLatestsArticles
+    getLatestsArticles,
+    getPopularArticles
 }

@@ -8,6 +8,7 @@ const { articleController } = require('../controllers');
 
 router.get('/', articleController.getAll);
 router.get('/latest', articleController.getLatestsArticles);
+router.get('/popular', articleController.getPopularArticles);
 router.post('/', auth(), articleController.createArticle);
 router.get('/:articleId', articleController.getArticle);
 router.put('/:articleId/like', auth(), articleController.likeArticle);

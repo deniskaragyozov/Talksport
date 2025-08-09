@@ -14,8 +14,13 @@ import { RouterLink } from '@angular/router';
 export class Home {
   latestArticles: Article[] = [];
   latestArticles$: Observable<Article[]>;
+
+  popularArticles: Article[] = [];
+  popularArticles$: Observable<Article[]>;
   
     constructor(private articlesService: ArticlesService){
       this.latestArticles$ = this.articlesService.getLatestArticles();
+      this.popularArticles$ = this.articlesService.getPopularArticles();
+
     }
 }

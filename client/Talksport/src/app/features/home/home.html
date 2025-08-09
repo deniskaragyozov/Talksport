@@ -37,23 +37,27 @@
             <h1>POPULAR</h1>
         </div>
 
-        <div class="noPosts">
-            <p>No posts yet</p>
-        </div>
-        <!-- <div class="posts">
-             <article class="post">
+        @if((latestArticles$ | async)?.length){
+            <div class="postsPopular">
+            @for(article of popularArticles$ | async; track article._id){
+                <article class="postPopular">
                 <div class="author">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPtR_TgjT8iyN4ixu6yCx8fD-Z4U1My5YZg&s" alt="pfp" class="pfp">
-                    <p class="username">Username</p>
+                    <img [src]="article.user.profilePic" alt="pfp" class="pfp">
+                    <p class="username">{{article.user.username}}</p>
                 </div>
 
                 <div class="content">
-                    <p class="description">This is a test post in Talksport, btw Mbeumo is the goat</p>
+                    <p class="title">{{article.title}}</p>
                 </div>
 
-                <a href="#"><button class="details-btn"> View more </button></a>
+                <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more </button></a>
             </article>
+            }
             </div>
-        </div> -->
+        }@else {
+            <div class="noPosts">
+                <p>No posts yet</p>
+            </div>
+        }
     </aside>
 </div>
