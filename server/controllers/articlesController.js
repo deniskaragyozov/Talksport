@@ -8,6 +8,19 @@ function getAll(req, res, next) {
         .catch(next);
 }
 
+function getLatestsArticles(req, res, next) {
+    const limit = Number(req.query.limit) || 0;
+
+    articleModel.find()
+        .sort({ created_at: -1 })
+        .limit(limit)
+        .populate('articleId userId')
+        .then(articles => {
+            res.status(200).json(articles)
+        })
+        .catch(next);
+}
+
 function createArticle(req, res, next) {
     const { title, imageUrl, description, user } = req.body;
     const { _id: userId } = req.user;
@@ -80,5 +93,6 @@ module.exports = {
     getArticle,
     likeArticle,
     editArticle,
-    deleteArticle
+    deleteArticle,
+    getLatestsArticles
 }

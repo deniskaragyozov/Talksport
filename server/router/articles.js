@@ -7,6 +7,7 @@ const { articleController } = require('../controllers');
 // middleware that is specific to this router
 
 router.get('/', articleController.getAll);
+router.get('/latest', articleController.getLatestsArticles);
 router.post('/', auth(), articleController.createArticle);
 router.get('/:articleId', articleController.getArticle);
 router.put('/:articleId/like', auth(), articleController.likeArticle);

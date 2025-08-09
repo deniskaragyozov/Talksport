@@ -18,6 +18,10 @@ export class ArticlesService {
         return this.httpClient.get<Article[]>(this.apiUrl);
     }
 
+    getLatestArticles(limit: number = 3): Observable<Article[]> {
+        return this.httpClient.get<Article[]>(`${this.apiUrl}/latest?limit={0}`.replace('{0}', limit.toString()));
+    }
+
     getArticle(articleId: string | null): Observable<Article> {
         return this.httpClient.get<Article>(`${this.apiUrl}/${articleId}`);
     }
