@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Article } from '../../models/article.model';
 import { Observable, of, switchMap } from 'rxjs';
 import { ArticlesService, AuthService } from '../../core/services';
@@ -9,19 +9,20 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 
 @Component({
   selector: 'app-details',
-  imports: [CommonModule, ReactiveFormsModule,],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './details.html',
   styleUrl: './details.css'
 })
 export class Details implements OnInit {
 
-  private authService = inject(AuthService)
+  private authService = inject(AuthService);
   private route = inject(ActivatedRoute);
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
 
   articleId: string = '';
   article$: Observable<Article>;
+  userId: string = '';
   user$: Observable<User>;
   editForm: FormGroup;
   isAuthor: boolean = false;
@@ -41,7 +42,7 @@ export class Details implements OnInit {
       title: ['', [Validators.required, Validators.minLength(2)]],
       imageUrl: ['', [Validators.pattern(/https?:\/\/(?:www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\/\S*)?/)]],
       description: ['', [Validators.required, Validators.minLength(15)]],
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -53,7 +54,8 @@ export class Details implements OnInit {
           description: articleData.description
         });
         this.articleId = articleData._id;
-        this.isAuthor = this.authService.isAuthor(articleData.userId);
+        this.userId = articleData.userId;
+        this.isAuthor = this.authService.isAuthor(this.userId);
         this.likes = articleData.likes;
         this.hasLiked$ = this.authService.hasLiked(this.likes);
       }

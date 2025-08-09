@@ -12,7 +12,7 @@
                 <a routerLink="/home" (click)="logout()">
                     <li>Logout</li>
                 </a>
-                <a routerLink="/profile">
+                <a [routerLink]="['/profile', currentUser()?.id]">
                     <li>Profile</li>
                 </a>
                 } @else{

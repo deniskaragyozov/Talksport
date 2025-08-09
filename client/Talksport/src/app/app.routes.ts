@@ -27,7 +27,7 @@ export const routes: Routes = [
         loadComponent: () => import('./features/post/post').then(c => c.Post)
     },
     {
-        path: 'profile',
+        path: 'profile/:userId',
         loadComponent: () => import('./features/profile/profile').then(c => c.Profile)
     },
     {

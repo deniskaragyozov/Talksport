@@ -13,6 +13,7 @@ export class Header {
   private router = inject(Router);
 
   readonly isLoggedIn = this.authService.isLoggedIn;
+  readonly currentUser = this.authService.currentUser;
 
   logout(): void {
     this.authService.logout().subscribe({

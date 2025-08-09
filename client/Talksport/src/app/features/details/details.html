@@ -12,7 +12,7 @@
                 }@else {
                 <img src="profilePicDefault.png" alt="Profile Picture" class="profilePicPost">
                 }
-                <a href="/user-id/profile"><span class="username">{{(user$ | async)?.username}}</span></a>
+                <a [routerLink]="['/profile', userId]" ><span class="username">{{(user$ | async)?.username}}</span></a>
             </div>
 
             <h3 class="postTitle">{{(article$ | async)?.title}}</h3>
