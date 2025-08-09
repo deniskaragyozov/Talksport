@@ -6,5 +6,6 @@ export interface Article{
     imageUrl: string,
     description: string,
     userId: string,
-    user: User
+    user: User,
+    likes: Array<string>
 }

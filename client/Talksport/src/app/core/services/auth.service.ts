@@ -1,7 +1,7 @@
 import { Injectable, signal } from "@angular/core";
 import { ApiUser, User } from "../../models";
 import { HttpClient } from "@angular/common/http";
-import { map, Observable, tap } from "rxjs";
+import { map, Observable, of, tap } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -76,6 +76,15 @@ export class AuthService {
     isAuthor(authorId: string | null): boolean{
         return authorId === this.currentUser()?.id;
     }
+
+hasLiked(likes: Array<string | undefined>): Observable<boolean>{
+    if(likes.includes(this.currentUser()?.id)){
+        return of(true);
+    }
+
+    return of(false);
+}
+
     
     private mapApiUserToUser(apiUser: ApiUser): User{
         return <User> {

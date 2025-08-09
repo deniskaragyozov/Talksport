@@ -23,14 +23,24 @@
             }
 
             <div class="postFooter">
-                <span class="postComments">Likes: 0</span>
+                <span class="postComments">Likes: {{likes.length}}</span>
 
                 @if(isLoggedIn()){
                 @if(isAuthor){
                 <div class="postActions">
-                    <a routerLink="/articles/1/like">
-                        <img src="like.png" alt="Like Icon" class="likeImage">
-                    </a>
+                     @if((hasLiked$ | async)){
+                    <div class="postActions">
+                        <a (click)="likeArticle()">
+                            <img src="likeRed.png" alt="Like Icon" class="likeImage">
+                        </a>
+                    </div>
+                }@else{
+                    <div class="postActions">
+                        <a (click)="likeArticle()">
+                            <img src="like.png" alt="Like Icon" class="likeImage">
+                        </a>
+                    </div>
+                }
                     <a (click)="switchEditMode()">
                         <img src="edit.png" alt="Edit Icon" class="editImage">
                     </a>
@@ -39,12 +49,19 @@
                     </a>
                 </div>
                 }@else {
-                <!-- If logged in but not owner -->
-                <div class="postActions">
-                    <a routerLink="/articles/1/like">
-                        <img src="like.png" alt="Like Icon" class="likeImage">
-                    </a>
-                </div>
+                @if((hasLiked$ | async)){
+                    <div class="postActions">
+                        <a (click)="likeArticle()">
+                            <img src="likeRed.png" alt="Like Icon" class="likeImage">
+                        </a>
+                    </div>
+                }@else{
+                    <div class="postActions">
+                        <a (click)="likeArticle()">
+                            <img src="like.png" alt="Like Icon" class="likeImage">
+                        </a>
+                    </div>
+                }
                 }
             }
             </div>

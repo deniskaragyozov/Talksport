@@ -27,11 +27,11 @@ function getArticle(req, res, next) {
 }
 
 function likeArticle(req, res, next) {
-    const articleId = req.params.themeId;
+    const { articleId } = req.body;
     const { _id: userId } = req.user;
-    themeModel.findByIdAndUpdate({ _id: articleId }, { $addToSet: { likes: userId } }, { new: true })
-        .then(updatedTheme => {
-            res.status(200).json(updatedTheme)
+    articleModel.findByIdAndUpdate({ _id: articleId }, { $addToSet: { likes: userId } }, { new: true })
+        .then(updatedArticle => {
+            res.status(200).json(updatedArticle)
         })
         .catch(next);
 }

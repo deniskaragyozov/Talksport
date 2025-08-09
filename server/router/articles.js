@@ -9,7 +9,7 @@ const { articleController } = require('../controllers');
 router.get('/', articleController.getAll);
 router.post('/', auth(), articleController.createArticle);
 router.get('/:articleId', articleController.getArticle);
-router.put('/:articleId/like', articleController.likeArticle);
+router.put('/:articleId/like', auth(), articleController.likeArticle);
 router.put('/:articleId/edit', auth(), articleController.editArticle);
 router.delete('/:articleId/delete', auth(), articleController.deleteArticle);
 

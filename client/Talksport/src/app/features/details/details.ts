@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from '../../models/article.model';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { ArticlesService, AuthService } from '../../core/services';
 import { User } from '../../models';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
-  imports: [RouterLink, CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,],
   templateUrl: './details.html',
   styleUrl: './details.css'
 })
@@ -20,11 +20,13 @@ export class Details implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
 
-  private artilceId: string;
+  articleId: string = '';
   article$: Observable<Article>;
   user$: Observable<User>;
   editForm: FormGroup;
-  isAuthor: boolean;
+  isAuthor: boolean = false;
+  hasLiked$: Observable<boolean> = of(false);
+  likes: Array<string> = [];
 
   editMode = signal<boolean>(false);
 
@@ -32,8 +34,6 @@ export class Details implements OnInit {
 
   constructor(private articlesService: ArticlesService) {
     this.article$ = this.articlesService.getArticle(this.route.snapshot.paramMap.get('articleId'));
-    this.artilceId = '';
-    this.isAuthor = false;
     this.user$ = this.article$.pipe(
       switchMap(article => this.authService.getUser(article.userId))
     );
@@ -52,8 +52,10 @@ export class Details implements OnInit {
           imageUrl: articleData.imageUrl,
           description: articleData.description
         });
-        this.artilceId = articleData._id;
+        this.articleId = articleData._id;
         this.isAuthor = this.authService.isAuthor(articleData.userId);
+        this.likes = articleData.likes;
+        this.hasLiked$ = this.authService.hasLiked(this.likes);
       }
     });
   }
@@ -131,7 +133,7 @@ export class Details implements OnInit {
   }
 
   deleteArticle(): void {
-    this.articlesService.deleteArticle(this.artilceId).subscribe(
+    this.articlesService.deleteArticle(this.articleId).subscribe(
       {
         next: () => {
           this.router.navigate(['/articles'])
@@ -142,6 +144,22 @@ export class Details implements OnInit {
       }
     );
   }
+
+  likeArticle(): void {
+    this.articlesService.likeArticle(this.articleId).subscribe(
+      {
+        next: () => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/articles', this.articleId]);
+        })
+        },
+        error: (err) => {
+          console.log('An error occured while liking article', err)
+        }
+      }
+    );
+  }
+
 
   switchEditMode(): void {
     if (this.editMode()) {

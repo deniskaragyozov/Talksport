@@ -51,4 +51,10 @@ export class ArticlesService {
                 withCredentials: true
             });
     }
+
+    likeArticle(articleId: string | null) {
+        return this.httpClient.put<Article>(`${this.apiUrl}/${articleId}/like`, { articleId }, {
+            withCredentials: true
+        })
+    }
 }
