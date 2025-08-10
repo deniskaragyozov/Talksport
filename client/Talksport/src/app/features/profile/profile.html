@@ -16,10 +16,10 @@
             <h2 class="postsTitle">Posts</h2>
         </div>
 
-        @if(userArticles.length){
+        @if((userArticles$ | async)?.length){
         <div class="posts">
 
-        @for(article of userArticles; track article._id){
+        @for(article of (userArticles$ | async); track article._id){
 
             <article class="post">
                  <div class="author">

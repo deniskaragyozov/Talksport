@@ -20,29 +20,20 @@ export class Profile {
   
   user$: Observable<User>;
   userArticlesIds: string[] = [];
-  userArticles: Article[] = [];
+  userArticles$: Observable<Article[]>;
 
 
   constructor(){
-    this.user$ = this.authService.getUser(this.route.snapshot.paramMap.get('userId'));
+    this.user$ = this.authService.getUser(
+      this.route.snapshot.paramMap.get('userId')
+    );
 
-    this.user$
-  .pipe(
-    filter((userData): userData is User => !!userData), // ensure it's not null
-    switchMap((userData) => {
-      this.userArticlesIds = userData.articles;
-
-      const articleRequests = this.userArticlesIds.map((id) =>
-        this.articleService.getArticle(id)
-      );
-
-      return forkJoin(articleRequests);
-    })
-  )
-  .subscribe((articles: Article[]) => {
-    this.userArticles = articles;
-  });
-    
+    this.userArticles$ = this.user$.pipe(
+      filter((userData): userData is User => !!userData),
+      switchMap((userData) =>
+        forkJoin(userData.articles.map((id) => this.articleService.getArticle(id)))
+      )
+    );
   }
 
 }
