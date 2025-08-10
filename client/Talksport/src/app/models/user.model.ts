@@ -3,5 +3,6 @@ export interface User {
     username: string,
     email: string,
     profilePic: string | null,
-    bio: string | null
+    bio: string | null,
+    articles: Array<string>
 }

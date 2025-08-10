@@ -2,38 +2,44 @@
     <div class="profileContainer">
 
         <div class="profileHeader">
-            <img src="{{(user$ | async)?.profilePic}}"
-                alt="Profile Picture" class="profilePic">
+            <img src="{{(user$ | async)?.profilePic}}" alt="Profile Picture" class="profilePic">
             <h1 class="usernameProfile">{{(user$ | async)?.username}}</h1>
             <h3>Bio:</h3>
-            
+
             <p class="bio">
                 @if((user$ | async)?.bio){
-                    {{(user$ | async)?.bio}}
+                {{(user$ | async)?.bio}}
                 }@else{
-                    No bio yet
+                No bio yet
                 }
             </p>
             <h2 class="postsTitle">Posts</h2>
         </div>
 
+        @if(userArticles.length){
+        <div class="posts">
+
+        @for(article of userArticles; track article._id){
+
+            <article class="post">
+                 <div class="author">
+                    <img [src]="article.user.profilePic" alt="pfp" class="pfp">
+                    <p class="username">{{article.user.username}}</p>
+                </div>
+
+                <div class="content">
+                    <p class="title">{{article.title}}</p>
+                </div>
+
+                <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more </button></a>
+            </article>
+            }
+        </div>
+        }@else {
         <div class="noPosts">
             <p>No posts yet</p>
         </div>
-        <!-- <div class="postsContainer">
-                If no posts 
-                <h1 class="noPosts">No posts yet</h1>
+        }
 
-                Example post
-                <div class="post">
-                    <div class="postHeader">
-                        <img src="path/to/profile-pic.png" alt="Profile Picture" class="profilePicPost">
-                        <span class="usernamePost">Username</span>
-                    </div>
-                    <p class="postText">Post title here</p>
-                    <a href="/post-id/details">
-                        <button class="readMore">read more...</button>
-                    </a>
-                </div> -->
-            </div>
+    </div>
 </main>
