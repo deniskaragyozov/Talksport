@@ -66,6 +66,17 @@ main {
         transform: scale(1.05);
     }
 
+    .registerBtn:disabled {
+        color: #666;
+        background-color: #ccc;
+    }
+
+    .registerBtn:disabled:hover {
+        color: #666;
+        background-color: #ccc;
+        transform: scale(1);
+    }
+
     a {
         color: #000;
         text-decoration: none;

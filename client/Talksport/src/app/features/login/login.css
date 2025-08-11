@@ -64,6 +64,17 @@ main {
         transform: scale(1.05);
     }
 
+    .loginBtn:disabled {
+        color: #666;
+        background-color: #ccc;
+    }
+
+    .loginBtn:disabled:hover {
+        color: #666;
+        background-color: #ccc;
+        transform: scale(1);
+    }
+
     .errorText {
         font-size: 0.8rem;
         color: #ff0000;

@@ -64,6 +64,17 @@ main {
         transform: scale(1.05);
     }
 
+    .postBtn:disabled {
+        color: #666;
+        background-color: #ccc;
+    }
+
+    .postBtn:disabled:hover {
+        color: #666;
+        background-color: #ccc;
+        transform: scale(1);
+    }
+
     textarea {
         width: 90%;
         padding: 10px;

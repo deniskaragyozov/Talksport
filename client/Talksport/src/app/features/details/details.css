@@ -198,6 +198,17 @@ main {
         transform: scale(1.05);
     }
 
+    .editBtn:disabled {
+        color: #666;
+        background-color: #ccc;
+    }
+
+    .editBtn:disabled:hover {
+        color: #666;
+        background-color: #ccc;
+        transform: scale(1);
+    }
+
     .cancelBtn {
         background-color: #00008b;
         color: white;
