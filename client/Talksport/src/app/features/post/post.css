@@ -91,8 +91,15 @@ main {
         border-color: #ffffff;
     }
 
-    .error{
-        color: red;
-        margin: -1.2em 0 -1em 0;
-    }
+    .errorText,
+    .error {
+    font-size: 0.8rem;
+    color: #ff0000;
+    margin-top: -15px;
+    margin-bottom: -5px;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 90%;
+    text-align: left;
+}
 }

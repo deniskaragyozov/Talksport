@@ -10,7 +10,9 @@ main {
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        width: 300px;
         min-height: 300px;
+        max-width: 300px;
 
         .loginForm {
             display: flex;
@@ -75,25 +77,26 @@ main {
         transform: scale(1);
     }
 
-    .errorText {
-        font-size: 0.8rem;
-        color: #ff0000;
-        margin-top: -15px;
-        margin-bottom: -5px;
-    }
-
+    
     a {
         color: #000;
         text-decoration: none;
     }
-
+    
     a:hover {
         color: #00008b;
         text-decoration: underline;
     }
 
-    .error{
-        color: red;
-        margin: -1.2em 0 -1em 0;
-    }
+    .errorText,
+    .error {
+    font-size: 0.8rem;
+    color: #ff0000;
+    margin-top: -15px;
+    margin-bottom: -5px;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 90%;
+    text-align: left;
+}
 }
