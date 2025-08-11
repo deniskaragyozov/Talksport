@@ -12,6 +12,7 @@ router.get('/popular', articleController.getPopularArticles);
 router.post('/', auth(), articleController.createArticle);
 router.get('/:articleId', articleController.getArticle);
 router.put('/:articleId/like', auth(), articleController.likeArticle);
+router.delete('/:articleId/like', auth(), articleController.unlikeArticle);
 router.put('/:articleId/edit', auth(), articleController.editArticle);
 router.delete('/:articleId/delete', auth(), articleController.deleteArticle);
 

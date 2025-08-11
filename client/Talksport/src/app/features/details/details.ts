@@ -162,6 +162,21 @@ export class Details implements OnInit {
     );
   }
 
+  unlikeArticle(): void {
+    this.articlesService.unlikeArticle(this.articleId).subscribe(
+      {
+        next: () => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/articles', this.articleId]);
+        })
+        },
+        error: (err) => {
+          console.log('An error occured while unliking article', err)
+        }
+      }
+    );
+  }
+
 
   switchEditMode(): void {
     if (this.editMode()) {

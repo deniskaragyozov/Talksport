@@ -30,7 +30,7 @@
                 <div class="postActions">
                      @if((hasLiked$ | async)){
                     <div class="postActions">
-                        <a (click)="likeArticle()">
+                        <a (click)="unlikeArticle()">
                             <img src="likeRed.png" alt="Like Icon" class="likeImage">
                         </a>
                     </div>
@@ -51,7 +51,7 @@
                 }@else {
                 @if((hasLiked$ | async)){
                     <div class="postActions">
-                        <a (click)="likeArticle()">
+                        <a (click)="unlikeArticle()">
                             <img src="likeRed.png" alt="Like Icon" class="likeImage">
                         </a>
                     </div>

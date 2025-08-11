@@ -61,7 +61,13 @@ export class ArticlesService {
     }
 
     likeArticle(articleId: string | null) {
-        return this.httpClient.put<Article>(`${this.apiUrl}/${articleId}/like`, { articleId }, {
+        return this.httpClient.put<Article>(`${this.apiUrl}/${articleId}/like`, {}, {
+            withCredentials: true
+        })
+    }
+
+    unlikeArticle(articleId: string | null) {
+        return this.httpClient.delete<Article>(`${this.apiUrl}/${articleId}/like`, {
             withCredentials: true
         })
     }
