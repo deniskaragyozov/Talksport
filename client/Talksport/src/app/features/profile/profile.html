@@ -1,9 +1,23 @@
 <main>
     <div class="profileContainer">
 
+        @if(!editMode()){
+
         <div class="profileHeader">
-            <img src="{{(user$ | async)?.profilePic}}" alt="Profile Picture" class="profilePic">
-            <h1 class="usernameProfile">{{(user$ | async)?.username}}</h1>
+            @if((user$ | async)?.profilePic){
+                <img src="{{(user$ | async)?.profilePic}}" alt="Profile Picture" class="profilePic">
+                }@else {
+                <img src="profilePicDefault.png" alt="Profile Picture" class="profilePic">
+                }
+            <div class="username">
+                <h1 class="usernameProfile">{{(user$ | async)?.username}}</h1>
+
+                @if(isAuthor){
+                <a (click)="switchEditMode()">
+                    <img src="edit.png" alt="Edit Icon" class="editImage">
+                </a>
+                }
+            </div>
             <h3>Bio:</h3>
 
             <p class="bio">
@@ -19,10 +33,10 @@
         @if((userArticles$ | async)?.length){
         <div class="posts">
 
-        @for(article of (userArticles$ | async); track article._id){
+            @for(article of (userArticles$ | async); track article._id){
 
             <article class="post">
-                 <div class="author">
+                <div class="author">
                     <img [src]="article.user.profilePic" alt="pfp" class="pfp">
                     <p class="username">{{article.user.username}}</p>
                 </div>
@@ -38,6 +52,41 @@
         }@else {
         <div class="noPosts">
             <p>No posts yet</p>
+        </div>
+        }
+        }@else {
+        <div class="editContainer">
+            <h1 class="title">Edit your profile</h1>
+
+            <form class="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()" >
+                <span>Profile picture</span>
+                <input [class.input-error]="isProfilePicValid" type="text" id="profilePic" placeholder="https://..."
+                    formControlName="profilePic">
+                @if(isProfilePicValid){
+                <p class="error">
+                    {{ profilePicErrorMessage }}
+                </p>
+                }
+
+                <span>Username</span>
+                <input [class.input-error]="isUsernameValid" type="text" id="username" formControlName="username">
+                @if(isUsernameValid){
+                <p class="error">
+                    {{ usernameErrorMessage }}
+                </p>
+                }
+
+                <span>Bio</span>
+                <input [class.input-error]="isBioValid" id="bio" formControlName="bio">
+                @if(isBioValid){
+                <p class="error">
+                    {{ bioErrorMessage }}
+                </p>
+                }
+
+                <button [disabled]="editForm.invalid" type="submit" class="editBtn">Edit</button>
+                <button type="button" class="cancelBtn" (click)="switchEditMode()">Cancel</button>
+            </form>
         </div>
         }
 

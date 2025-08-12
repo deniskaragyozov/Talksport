@@ -73,18 +73,23 @@ export class AuthService {
         return this.httpClient.get<User>(`${this.apiUrl}/users/profile/${userId}`)
     }
 
+    editProfile(username: string, profilePic: string, bio: string): Observable<User> {
+        return this.httpClient.put<User>(`${this.apiUrl}/users/profile`, {username, profilePic, bio}, {
+            withCredentials: true
+        })
+    }
+
     isAuthor(authorId: string | null): boolean{
         return authorId === this.currentUser()?.id;
     }
 
-hasLiked(likes: Array<string | undefined>): Observable<boolean>{
-    if(likes.includes(this.currentUser()?.id)){
-        return of(true);
+    hasLiked(likes: Array<string | undefined>): Observable<boolean>{
+        if(likes.includes(this.currentUser()?.id)){
+         return of(true);
+        }
+
+        return of(false);
     }
-
-    return of(false);
-}
-
     
     private mapApiUserToUser(apiUser: ApiUser): User{
         return <User> {

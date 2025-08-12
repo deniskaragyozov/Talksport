@@ -94,9 +94,9 @@ function getProfileInfo(req, res, next) {
 
 function editProfileInfo(req, res, next) {
     const { _id: userId } = req.user;
-    const { username, email, profilePic, bio } = req.body;
+    const { username, profilePic, bio } = req.body;
 
-    userModel.findOneAndUpdate({ _id: userId }, { username, email, profilePic, bio }, { runValidators: true, new: true })
+    userModel.findOneAndUpdate({ _id: userId }, { username, profilePic, bio }, { runValidators: true, new: true })
         .then(x => { res.status(200).json(x) })
         .catch(next);
 }

@@ -67,7 +67,7 @@
             </div>
         </div>
         }@else {
-        <div class="postContainer">
+        <div class="editContainer">
             <h1 class="title">Edit your post</h1>
 
             <form class="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
@@ -89,7 +89,7 @@
                 }
 
                 <span>Description</span>
-                <textarea [class.input-error] id="description" formControlName="description"></textarea>
+                <textarea [class.input-error]="isDescriptionValid" id="description" formControlName="description"></textarea>
                 @if(isDescriptionValid){
                 <p class="error">
                     {{ descriptionErrorMessage }}
