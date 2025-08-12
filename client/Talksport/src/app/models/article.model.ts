@@ -8,5 +8,5 @@ export interface Article{
     userId: string,
     user: User,
     likes: Array<string>,
-    _createdAt: Date
+    created_at: Date
 }

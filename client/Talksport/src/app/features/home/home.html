@@ -21,7 +21,7 @@
                         </div>
 
                 <div class="post-footer">
-                    <p>12.08.2025</p>
+                    <p>{{article.created_at | timeAgo}}</p>
 
                     <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more </button></a>
                 </div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="post-footer">
-                    <p>12.08.2025</p>
+                    <p>{{article.created_at | timeAgo}}</p>
 
                     <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more </button></a>
                 </div>

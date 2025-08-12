@@ -27,7 +27,7 @@
                 
                 <span class="postComments">Likes: {{likes.length}}</span>
                 
-                <p>12.08.2025</p>
+                <p>{{(article$ | async)?.created_at | date: 'h:mm a · MMM d, y'}}</p>
                 
                 @if(isLoggedIn()){
                 @if(isAuthor){

@@ -143,10 +143,11 @@
 
             a {
             align-self: flex-end;
-            width: 30%;
+            width: 25%;
 
             .details-btn {
                 padding: 0.5em;
+                font-size: 0.7em;
                 border: none;
                 border-radius: 0.4em;
             }

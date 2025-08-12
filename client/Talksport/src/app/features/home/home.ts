@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { ArticlesService } from '../../core/services';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { TimeAgoPipe } from '../../shared/pipes';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TimeAgoPipe],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

@@ -4,11 +4,12 @@ import { ArticlesService } from '../../core/services/articles.service';
 import { Article } from '../../models/article.model';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { TimeAgoPipe } from '../../shared/pipes';
 
 
 @Component({
   selector: 'app-articles',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, TimeAgoPipe],
   templateUrl: './articles.html',
   styleUrl: './articles.css'
 })
