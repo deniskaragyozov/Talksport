@@ -7,5 +7,6 @@ export interface Article{
     description: string,
     userId: string,
     user: User,
-    likes: Array<string>
+    likes: Array<string>,
+    _createdAt: Date
 }

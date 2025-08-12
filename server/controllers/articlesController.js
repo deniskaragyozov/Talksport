@@ -46,10 +46,10 @@ function getPopularArticles(req, res, next) {
 }
 
 function createArticle(req, res, next) {
-    const { title, imageUrl, description } = req.body;
+    const { title, imageUrl, description, user } = req.body;
     const { _id: userId } = req.user;
 
-    articleModel.create({ title, description, imageUrl, userId})
+    articleModel.create({ title, description, imageUrl, userId, user })
         .then((newArticle) => {
             return userModel.findByIdAndUpdate(
                 userId,

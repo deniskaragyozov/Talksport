@@ -50,21 +50,33 @@
             }
         }
 
-        a {
-            align-self: flex-end;
 
-            .details-btn {
-                font-size: 0.6em;
-                padding: 0.5em;
-                border: none;
-                border-radius: 0.4em;
-            }
-        }
 
         a:hover {
             .details-btn {
                 background-color: #00008b;
                 color: #fff;
+            }
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            p {
+                font-size: 0.7em;
+            }
+
+            a {
+                align-self: flex-end;
+
+                .details-btn {
+                    font-size: 0.6em;
+                    padding: 0.5em;
+                    border: none;
+                    border-radius: 0.4em;
+                }
             }
         }
     }

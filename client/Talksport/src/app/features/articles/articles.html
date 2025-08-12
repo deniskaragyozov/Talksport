@@ -11,17 +11,21 @@
                 @for (article of articles$ | async; track article._id) {
                 <article class="post">
                     <div class="author">
-                        <img [src]="article.user.profilePic"
-                            alt="pfp" class="pfp">
+                        <img [src]="article.user.profilePic" alt="pfp" class="pfp">
                         <!-- TODO: Add default profilePic -->
                         <p class="username">{{article.user.username}}</p>
                     </div>
+                    
                     <div class="content">
                         <p class="title">{{ article.title }}</p>
                     </div>
-                    <a [routerLink]="['/articles', article._id]">
-                        <button class="details-btn">View more</button>
-                    </a>
+
+                    <div class="post-footer">
+                        <p>12.08.2025</p>
+
+                        <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more
+                            </button></a>
+                    </div>
                 </article>
                 }
             </div>
