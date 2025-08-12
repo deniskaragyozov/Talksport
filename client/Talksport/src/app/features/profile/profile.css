@@ -43,23 +43,25 @@ main {
         margin-bottom: -15px;
     }
 
-    .usernameProfile {
-        font-weight: bold;
-        color: #000;
-    }
 
-    .username{
+    .username {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.4em;
 
-        a{
-            .editImage{
+        .usernameProfile {
+            font-weight: bold;
+            color: #000;
+        }
+
+
+        a {
+            .editImage {
                 width: 25px;
             }
 
-            .editImage:hover{
+            .editImage:hover {
                 scale: 1.2
             }
         }
@@ -74,7 +76,7 @@ main {
         line-height: 1.5;
     }
 
-   .posts {
+    .posts {
         display: flex;
         flex-direction: column;
         gap: 0.9em;
@@ -91,7 +93,7 @@ main {
         min-width: 60%;
 
         .author {
-            font-size: 0.7em;
+            font-size: 1em;
             display: flex;
             align-items: center;
             gap: 0.4em;
@@ -109,7 +111,7 @@ main {
             justify-content: start;
 
             .title {
-                font-size: 0.9em;
+                font-size: 1em;
             }
         }
 
@@ -172,7 +174,7 @@ main {
         border-color: #ffffff;
     }
 
-    .input-error{
+    .input-error {
         border-color: red;
     }
 
@@ -217,7 +219,7 @@ main {
         border-radius: 20px;
         cursor: pointer;
         transition: 0.3s;
-   }
+    }
 
     .cancelBtn:hover {
         background-color: rgb(240, 240, 240);
@@ -240,7 +242,7 @@ main {
         outline: none;
         border-color: #ffffff;
     }
-    
+
     .errorText,
     .error {
         font-size: 0.8rem;
