@@ -74,9 +74,15 @@ export class AuthService {
     }
 
     editProfile(username: string, profilePic: string, bio: string): Observable<User> {
-        return this.httpClient.put<User>(`${this.apiUrl}/users/profile`, {username, profilePic, bio}, {
+        return this.httpClient.put<ApiUser>(`${this.apiUrl}/users/profile`, {username, profilePic, bio}, {
             withCredentials: true
-        })
+        }).pipe(
+            map(apiUser => this.mapApiUserToUser(apiUser)),
+            tap(user => {
+                this._currentUser.set(user);
+                localStorage.setItem('currentUser', JSON.stringify(user))
+            })
+        )
     }
 
     isAuthor(authorId: string | null): boolean{
