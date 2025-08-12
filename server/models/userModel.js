@@ -44,15 +44,7 @@ const userSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "Article"
     }]
-    //TODO: ADD ARTICLES
-    // themes: [{
-    //     type: ObjectId,
-    //     ref: "Theme"
-    // }],
-    // posts: [{
-    //     type: ObjectId,
-    //     ref: "Post"
-    // }]
+ 
 }, { timestamps: { createdAt: 'created_at' } });
 
 userSchema.methods = {

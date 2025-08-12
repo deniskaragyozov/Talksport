@@ -5,34 +5,41 @@
                 <h1>LATEST</h1>
             </div>
 
-            
+
             @if((latestArticles$ | async)?.length){
 
-                <div class="posts">
+            <div class="posts">
                 @for(article of latestArticles$ | async; track article._id){
-                    <article class="post">
-                        <div class="author">
-                            <img [src]="article.user.profilePic" alt="pfp" class="pfp">
-                            <p class="username">{{article.user.username}}</p>
-                        </div>
-        
-                        <div class="content">
-                            <p class="title">{{article.title}}</p>
-                        </div>
+                <article class="post">
+                    <div class="author">
 
-                <div class="post-footer">
-                    <p>{{article.created_at | timeAgo}}</p>
+                        @if(article.user.profilePic){
+                        <img src="{{article.user.profilePic}}" alt="Profile Picture" class="profilePicPost">
+                        }@else {
+                        <img src="profilePicDefault.png" alt="Profile Picture" class="profilePicPost">
+                        }
 
-                    <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more </button></a>
-                </div>
-                    </article>
+                        <p class="username">{{article.user.username}}</p>
+                    </div>
+
+                    <div class="content">
+                        <p class="title">{{article.title}}</p>
+                    </div>
+
+                    <div class="post-footer">
+                        <p>{{article.created_at | timeAgo}}</p>
+
+                        <a [routerLink]="['/articles', article._id]"><button class="details-btn"> View more
+                            </button></a>
+                    </div>
+                </article>
                 }
             </div>
-        }@else {
+            }@else {
             <div class="noPosts">
                 <p>No posts yet</p>
             </div>
-        }
+            }
         </div>
     </main>
 
@@ -42,11 +49,15 @@
         </div>
 
         @if((latestArticles$ | async)?.length){
-            <div class="postsPopular">
+        <div class="postsPopular">
             @for(article of popularArticles$ | async; track article._id){
-                <article class="postPopular">
+            <article class="postPopular">
                 <div class="author">
-                    <img [src]="article.user.profilePic" alt="pfp" class="pfp">
+                    @if(article.user.profilePic){
+                    <img src="{{article.user.profilePic}}" alt="Profile Picture" class="profilePicPost">
+                    }@else {
+                    <img src="profilePicDefault.png" alt="Profile Picture" class="profilePicPost">
+                    }
                     <p class="username">{{article.user.username}}</p>
                 </div>
 
@@ -61,11 +72,11 @@
                 </div>
             </article>
             }
-            </div>
+        </div>
         }@else {
-            <div class="noPosts">
-                <p>No posts yet</p>
-            </div>
+        <div class="noPosts">
+            <p>No posts yet</p>
+        </div>
         }
     </aside>
 </div>

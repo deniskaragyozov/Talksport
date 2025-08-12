@@ -5,10 +5,10 @@
 
         <div class="profileHeader">
             @if((user$ | async)?.profilePic){
-                <img src="{{(user$ | async)?.profilePic}}" alt="Profile Picture" class="profilePic">
-                }@else {
-                <img src="profilePicDefault.png" alt="Profile Picture" class="profilePic">
-                }
+            <img src="{{(user$ | async)?.profilePic}}" alt="Profile Picture" class="profilePic">
+            }@else {
+            <img src="profilePicDefault.png" alt="Profile Picture" class="profilePic">
+            }
             <div class="username">
                 <h1 class="usernameProfile">{{(user$ | async)?.username}}</h1>
 
@@ -37,7 +37,11 @@
 
             <article class="post">
                 <div class="author">
-                    <img [src]="article.user.profilePic" alt="pfp" class="pfp">
+                    @if(article.user.profilePic){
+                    <img src="{{article.user.profilePic}}" alt="Profile Picture" class="profilePicPost">
+                    }@else {
+                    <img src="profilePicDefault.png" alt="Profile Picture" class="profilePicPost">
+                    }
                     <p class="username">{{article.user.username}}</p>
                 </div>
 
@@ -58,7 +62,7 @@
         <div class="editContainer">
             <h1 class="title">Edit your profile</h1>
 
-            <form class="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()" >
+            <form class="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
                 <span>Profile picture</span>
                 <input [class.input-error]="isProfilePicValid" type="text" id="profilePic" placeholder="https://..."
                     formControlName="profilePic">

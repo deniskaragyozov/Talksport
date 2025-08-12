@@ -10,7 +10,6 @@ import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModu
   styleUrl: './register.css'
 })
 export class Register {
-  //TODO: FIX PASSWORD MISMATCH AND INPUTS
   private authService = inject(AuthService);
   private router = inject(Router);
   private formBuilder = inject(FormBuilder);

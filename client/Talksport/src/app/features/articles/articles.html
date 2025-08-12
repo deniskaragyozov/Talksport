@@ -11,11 +11,14 @@
                 @for (article of articles$ | async; track article._id) {
                 <article class="post">
                     <div class="author">
-                        <img [src]="article.user.profilePic" alt="pfp" class="pfp">
-                        <!-- TODO: Add default profilePic -->
+                        @if(article.user.profilePic){
+                        <img src="{{article.user.profilePic}}" alt="Profile Picture" class="profilePicPost">
+                        }@else {
+                        <img src="profilePicDefault.png" alt="Profile Picture" class="profilePicPost">
+                        }
                         <p class="username">{{article.user.username}}</p>
                     </div>
-                    
+
                     <div class="content">
                         <p class="title">{{ article.title }}</p>
                     </div>
