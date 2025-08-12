@@ -49,15 +49,13 @@ export class Profile {
 
   ngOnInit(): void {
     this.user$.subscribe((userData) => {
-      if (userData) {
-        this.editForm.patchValue({
-          username: userData.username,
-          profilePic: userData.profilePic,
-          bio: userData.bio
-        });
-
+      
       this.isAuthor = this.authService.isAuthor(this.route.snapshot.paramMap.get('userId'));
-      }
+
+    });
+
+    this.route.params.subscribe(params => {
+      this.loadProfile();
     });
   }
 
@@ -137,5 +135,17 @@ export class Profile {
       this.editMode.set(true);
     }
   }
+
+  loadProfile() {
+    this.user$ = this.authService.getUser(this.route.snapshot.paramMap.get('userId'))
+
+    this.userArticles$ = this.user$.pipe(
+      filter((userData): userData is User => !!userData),
+      switchMap((userData) =>
+        forkJoin(userData.articles.map((id) => this.articleService.getArticle(id)))
+      )
+    );
+  }
+
 
 }
