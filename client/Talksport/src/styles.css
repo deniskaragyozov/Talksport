@@ -47,5 +47,5 @@ app-home, app-articles, app-details
 {
     display: flex;
     flex-direction: column;
-    min-height: 41vh;
+    min-height: 43.3vh;
 }
