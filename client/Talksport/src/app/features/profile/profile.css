@@ -91,6 +91,7 @@ main {
         border-radius: 0.8em;
         padding: 1em;
         min-width: 60%;
+        max-height: 150px;
 
         .author {
             font-size: 1em;
@@ -109,28 +110,43 @@ main {
         .content {
             display: flex;
             justify-content: start;
+            align-items: center;
+            margin-bottom: -1.5em;
 
             .title {
                 font-size: 1em;
             }
         }
 
-        a {
-            align-self: flex-end;
-            width: 30%;
 
-            .details-btn {
-                background-color: #fff;
-                padding: 0.5em;
-                border: none;
-                border-radius: 0.4em;
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            p {
+                font-size: 0.7em;
             }
-        }
 
-        a:hover {
-            .details-btn {
-                background-color: #00008b;
-                color: #fff;
+            a {
+                align-self: flex-end;
+                width: 25%;
+
+                .details-btn {
+                    padding: 0.5em;
+                    font-size: 0.7em;
+                    background-color: #fff;
+                    border: none;
+                    border-radius: 0.4em;
+                }
+            }
+
+            a:hover {
+                .details-btn {
+                    background-color: #00008b;
+                    color: #fff;
+                }
             }
         }
     }
