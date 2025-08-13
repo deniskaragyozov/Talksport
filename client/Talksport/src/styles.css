@@ -43,9 +43,9 @@ app-root{
     
 }
 
-app-home, app-articles, app-details
+app-home, app-articles, app-details, app-login
 {
     display: flex;
     flex-direction: column;
-    min-height: 43.3vh;
+    min-height: 50vh;
 }
